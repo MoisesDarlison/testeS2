@@ -1,0 +1,44 @@
+server.js
+    instancia o servidor, carregando configurações e tals
+    importa routes (todas)
+
+routes
+    define as rotas (podendo importar algum middleware)
+    importa controllers
+    dizer que /novo => controller.novo()
+
+controllers
+    define o que a rota faz, verificando/validando a informação enviada pelo usuário
+    importa models (apenas a referente ao controller)
+    dizer que novo() => model.createGrupo()
+
+models
+    define os métodos que manipulam o banco.. (select, insert ...)
+    importa db
+    diz que createGrupo() -> INSERT INTO grupo ...
+
+db
+    instancia a conexão (exporta a conexão/pool)
+
+views (se for usado)
+    define os templates das páginas
+    normalmente usa "ejs"
+
+public
+    contém os assets públicos (css, js externos, fontes e imagens)
+
+RESUMO:
+Para cadastrar um usuário
+Rota: POST /usuarios/ -> Controller: Usuario.create() -> Model: create()
+
+Para editar/atualizar
+PUT /usuarios/:id -> Controoler: Usuario.update() -> Model: update()
+
+Para remover:
+DELETE /usuarios/:id -> Controoler: Usuario.delete() -> Model: delete()
+
+Obter um unico usuario:
+GET /usuarios/:id
+
+Obter todos:
+GET /usuarios
